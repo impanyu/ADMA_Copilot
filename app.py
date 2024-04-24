@@ -3,19 +3,23 @@ import streamlit as st
 from PyPDF2 import PdfReader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.vectorstores import FAISS
+from langchain_community.vectorstores import FAISS
 from langchain.chains.question_answering import load_qa_chain
-from langchain.llms import OpenAI
-from langchain.callbacks import get_openai_callback
+from langchain_community.llms import OpenAI
+from langchain_community.callbacks import get_openai_callback
 
 
 def main():
-    load_dotenv()
-    st.set_page_config(page_title="Ask your PDF")
-    st.header("Ask your PDF 💬")
+    load_dotenv(".venv")
+    #set the page title and icon
+    #the icon is a green leaf
+    st.set_page_config(page_title="ADMA Copilot", page_icon="🍃")
+    st.header("ADMA Copilot: Ask Me Anything About Your AgData💬",divider="green")
+
+    st.sidebar.title("Control Panel")
     
     # upload file
-    pdf = st.file_uploader("Upload your PDF", type="pdf")
+    pdf = st.sidebar.file_uploader("Upload your PDF", type="pdf")
     
     # extract the text
     if pdf is not None:
