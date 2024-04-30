@@ -8,3 +8,9 @@ openai
 tiktoken
 langchain-openai
 langchain-experimental
+google-search-results
+pydantic==1.10.9
+openapi-pydantic
+openapi-schema-pydantic
+langchain-core
+streamlit-folium
