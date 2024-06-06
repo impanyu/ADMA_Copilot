@@ -143,8 +143,8 @@ def file_existence_check(path: str) -> str:
 
 
 
-print(refresh_JD_access_token())
-#JD_api_key = refresh_JD_access_token()["access_token"]
-#requests = Requests(headers={"Authorization": f"Bearer {JD_api_key}", "User-Agent": "ADMA", "Accept": "application/vnd.deere.axiom.v3+json","Connection": "keep-alive","Accept-Encoding": "gzip, deflate, br"})
-#print(f"JD_api_key={JD_api_key}")
+#print(refresh_JD_access_token())
+JD_api_key = refresh_JD_access_token()["access_token"]
+requests = Requests(headers={"Authorization": f"Bearer {JD_api_key}", "User-Agent": "ADMA", "Accept": "application/vnd.deere.axiom.v3+json","Connection": "keep-alive","Accept-Encoding": "gzip, deflate, br"})
+print(f"JD_api_key={JD_api_key}")
 
