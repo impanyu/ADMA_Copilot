@@ -13,7 +13,7 @@ token = '7353d23703a37d3a5554e63aa448bbc509b0cec0'
 headers = {'Authorization': f'Token {token}'}
 
 requests = Requests(headers=headers)
-root_url = 'http://unladma.hopto.org'
+root_url = 'http://adma.hopto.org'
 
 class ADMA_get_meta_data_input_schema(BaseModel):
     file_path: str = Field(description="The path or name of the file in the ADMA system. The full path is like /username/ag_data/.../file_name, but here the file_path is the relative path after the ag_data directory.")
