@@ -97,13 +97,13 @@ def define_agent():
     
    
     #requests = Requests(headers={"Authorization": f"Bearer {JD_api_key}", "User-Agent": "ADMA", "Accept": "application/vnd.deere.axiom.v3+json","Connection": "keep-alive","Accept-Encoding": "gzip, deflate, br"})
-    JD_toolkit = NLAToolkit.from_llm_and_url(
-    llm,
+    #JD_toolkit = NLAToolkit.from_llm_and_url(
+    #llm,
     #"https://spoonacular.com/application/frontend/downloads/spoonacular-openapi-3.json",
-    "https://www.klarna.com/us/shopping/public/openai/v0/api-docs/",
+    #"https://www.klarna.com/us/shopping/public/openai/v0/api-docs/",
     #"http://unladma.hopto.org/static/JD_openapi.json",
     #requests=requests,
-    )
+    #)
 
 
     tools=[]
