@@ -52,7 +52,7 @@ def ADMA_list_directory_contents(dir_path):
     
 
 class ADMA_get_running_instance_input_schema(BaseModel):
-    dir_path: str = Field(description="The path or name of the directory in the ADMA system. The full path is like /username/ag_data/.../file_name, but here the dir_path is the relative path after the ag_data directory.")
+    dir_path: str = Field(description="The path or name of the directory in the ADMA system. The dir_path is like /ypan12/ag_data/.../file_name")
 
 @tool("ADMA_get_running_instance", args_schema=ADMA_get_running_instance_input_schema)
 def ADMA_get_running_instance(dir_path):
