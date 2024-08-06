@@ -235,7 +235,8 @@ def create_map(lat,lng):
     
 
 def ai_reply(response_output, if_history=False):
-    if (json_output := is_json(response_output)) and "type" in json_output and json_output["type"]=="boundary":
+    json_output = extract_json(response_output)
+    if not json_output == None and "type" in json_output and json_output["type"]=="boundary":
         
         if not os.path.exists(json_output["path"]):
             if if_history:
@@ -273,7 +274,7 @@ def ai_reply(response_output, if_history=False):
             with  st.chat_message("assistant", avatar="🤖"):
                 folium_static(m,height=400,width=600)
 
-    elif (json_output := is_json(response_output)) and  "type" in json_output and json_output["type"]=="file":
+    elif not json_output == None and  "type" in json_output and json_output["type"]=="file":
         print("here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         print(response_output)
         print(is_json(response_output))
@@ -284,19 +285,10 @@ def ai_reply(response_output, if_history=False):
             else:
                 st.chat_message("assistant", avatar="🤖").write(stream_data(data))
 
-    elif (json_output := is_json(response_output)) and "series" in json_output:
-        options = {
-            "xAxis": {
-                "type": "category",
-                "data": json.loads(["a","b","c","d","e"]),
-            },
-            "yAxis": {"type": "value"},
-            "series": [
-                {"data": json.loads([1,2,3,4,5]), "type": "line"}
-            ],
-        }
+    elif not json_output == None and "series" in json_output:
+  
         with st.chat_message("assistant", avatar="🤖"):
-            st_echarts(options=options, height=400, width=600)
+            st_echarts(options=json_output, height=400, width=600)
 
     else:
        
