@@ -236,12 +236,15 @@ def create_map(lat,lng):
     
 
 def ai_reply(response_output, if_history=False):
-    
+    print(f"response output: {response_output}")
+        
     json_output = find_largest_enclosed_json(response_output)
+    print(f"json_output: {json_output}")
     if json_output == None:
         json_output = None
     else:
         json_output = is_json(json_output)
+    print(f"json_output: {json_output}")
     if  json_output  and "type" in json_output and json_output["type"]=="boundary":
         
         if not os.path.exists(json_output["path"]):
@@ -297,8 +300,7 @@ def ai_reply(response_output, if_history=False):
             st_echarts(options=json_output, height=400, width=600)
 
     else:
-        print(f"response output: {response_output}")
-        print(f"json_output: {json_output}")
+        
         if if_history:
             st.chat_message("assistant", avatar="🤖").write(response_output)
         else:
