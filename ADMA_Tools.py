@@ -94,7 +94,7 @@ class ADMA_plot_option_input_schema(BaseModel):
    
 @tool("ADMA_plot_option", args_schema=ADMA_plot_option_input_schema)
 def ADMA_plot_option(json_str, value_name="temperature"):
-    """Always call this tool when the user want to plot realm5 weather data by specifying the value name.  If the user ask plot the temperature, the value_name should be 'temperature'."""
+    """Always call this tool when the user want to plot realm5 weather data by specifying the value name.  If the user ask to plot the temperature, the value_name should be 'temperature'."""
     data = json.loads(json_str)
     x_values = [] 
     y_values = []
