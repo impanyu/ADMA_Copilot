@@ -129,6 +129,7 @@ def define_agent():
         ADMA_list_directory_contents,
         ADMA_get_running_instance,
         ADMA_check_file,
+        ADMA_plot_option,
     ]
     tools.extend(ADMA_tools)
     tools.extend([
@@ -170,7 +171,7 @@ def define_agent():
                Use John_Deere_APIs for any questions about ENREEC.\
                Use ADMA_APIs for any questions about ADMA.\
                You might know the answer without running any tool, but you should always run the tool to get the answer. This is extremely important!!\
-                \
+               For the return value of ADMA_plot_option, keep its original format of json string. \
                "
           ),
           ("placeholder", "{chat_history}"),
@@ -234,7 +235,7 @@ def create_map(lat,lng):
     
 
 def ai_reply(response_output, if_history=False):
-    if (json_output := is_json(response_output)) and json_output["type"]=="boundary":
+    if (json_output := is_json(response_output)) and "type" in json_output and json_output["type"]=="boundary":
         
         if not os.path.exists(json_output["path"]):
             if if_history:
@@ -272,7 +273,7 @@ def ai_reply(response_output, if_history=False):
             with  st.chat_message("assistant", avatar="🤖"):
                 folium_static(m,height=300,width=500)
 
-    elif (json_output := is_json(response_output)) and json_output["type"]=="file":
+    elif (json_output := is_json(response_output)) and  "type" in json_output and json_output["type"]=="file":
         print("here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         print(response_output)
         print(is_json(response_output))
@@ -282,8 +283,10 @@ def ai_reply(response_output, if_history=False):
                 st.chat_message("assistant", avatar="🤖").write(data)
             else:
                 st.chat_message("assistant", avatar="🤖").write(stream_data(data))
-    
 
+    elif (json_output := is_json(response_output)) and "series" in json_output:
+        with st.chat_message("assistant", avatar="🤖"):
+            st_echarts(options=json_output)
 
     else:
        

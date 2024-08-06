@@ -47,8 +47,8 @@ def ADMA_list_directory_contents(dir_path):
     if response.status_code == 200:
         return response.json()  # Assuming the API returns a JSON list of paths
     else:
-        print(f"Failed to list directory: {dir_path}, Status code: {response.status_code}, {response.text}")
-        return []
+        return f"Failed to list directory: {dir_path}, Status code: {response.status_code}, {response.text}"
+       
     
 
 class ADMA_get_running_instance_input_schema(BaseModel):
@@ -80,7 +80,32 @@ def ADMA_check_file(dir_path):
         with open(f"tmp/{rd}_{os.path.basename(dir_path)}", "wb") as f:
             f.write(response.content)
         result = {"type": "file", "path": f"tmp/{rd}_{os.path.basename(dir_path)}"}
-        return result   
+        return json.dumps(result)
     else:
         return f"Failed to download file: {dir_path}, Status code: {response.status_code}, {response.text}"
-         
+
+
+
+class ADMA_plot_option_input_schema(BaseModel):
+    x_values: str = Field(description="json list of x values")
+    y_values: str = Field(description="json list of y values")
+
+@tool("ADMA_plot_option", args_schema=ADMA_plot_option_input_schema)
+def ADMA_plot_option(x_values, y_values):
+    """Always call this tool when the user specify x values and y values from a file on ADMA server, and want to plot x and y."""
+    if type(json.loads(x_values)[0]) == "str":
+        x_type = "category"
+    else:
+        x_type = "value"
+
+    options = {
+        "xAxis": {
+            "type": x_type,
+            "data": json.loads(x_values),
+        },
+        "yAxis": {"type": "value"},
+        "series": [
+            {"data": json.loads(y_values), "type": "line"}
+        ],
+    }
+    return json.dumps(options)
