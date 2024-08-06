@@ -87,8 +87,8 @@ def ADMA_check_file(dir_path):
 
 
 class ADMA_plot_option_input_schema(BaseModel):
-    x_values: str = Field(description="json list of x values")
-    y_values: str = Field(description="json list of y values")
+    x_values: str = Field(description="json string: a list of x values, in the format of '[1, 2, 3, 4, 5]'")
+    y_values: str = Field(description="json string: a list of y values, in the format of '[1, 2, 3, 4, 5]'")
 
 @tool("ADMA_plot_option", args_schema=ADMA_plot_option_input_schema)
 def ADMA_plot_option(x_values, y_values):
