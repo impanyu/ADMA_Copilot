@@ -171,7 +171,7 @@ def define_agent():
                Use John_Deere_APIs for any questions about ENREEC.\
                Use ADMA_APIs for any questions about ADMA.\
                You might know the answer without running any tool, but you should always run the tool to get the answer. This is extremely important!!\
-               For the return value of ADMA_plot_option, keep its original format of json string. \
+               If you get a json string, just output the json string, do not add any extra charactors! \
                "
           ),
           ("placeholder", "{chat_history}"),
