@@ -307,11 +307,11 @@ def ai_reply(response_output, if_history=False):
             options = {
                 "xAxis": {
                     "type": "category",
-                    "data": json.loads(["a","b","c","d","e"]),
+                    "data": ["a","b","c","d","e"],
                 },
                 "yAxis": {"type": "value"},
                 "series": [
-                    {"data": json.loads([1,2,3,4,5]), "type": "line"}
+                    {"data": [1,2,3,4,5], "type": "line"}
                 ],
             }
             with st.chat_message("assistant", avatar="🤖"):
