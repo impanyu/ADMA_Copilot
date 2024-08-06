@@ -169,6 +169,7 @@ def define_agent():
                For any query, make sure to use vectorstore_tool.\
                Make sure to use the tavily_search_results_json tool for something you do not know. \
                When the user want to draw a map or boundary of an ENREEC field, make sure to call query_ENREEC_boundary_in_field first. After that you only need to reply the json format returned from the tool: query_ENREEC_boundary_in_field, no more any extra charactors!\
+               For ADMA_plot_option, you should call the tool to get the json string, then output the json string, do not add any extra charactors!\
                Use John_Deere_APIs for any questions about ENREEC.\
                Use ADMA_APIs for any questions about ADMA.\
                You might know the answer without running any tool, but you should always run the tool to get the answer. This is extremely important!!\
