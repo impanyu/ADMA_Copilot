@@ -113,6 +113,12 @@ def ADMA_plot_option(dir_path, value_name="temperature"):
         i += 1
 
     options = {
+        "tooltip": {
+            "trigger": 'axis',  # Can be 'item' for single data points or 'axis' for all items in the category
+            "axisPointer": {  # Used in axis trigger to indicate the axis
+                "type": 'shadow'  # Options are 'line' or 'shadow'
+            }
+        },
         "xAxis": {
             "type": "category",
             "data": x_values,
