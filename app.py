@@ -271,14 +271,15 @@ def ai_reply(response_output, if_history=False):
                 folium_static(m,height=300,width=500)
 
     elif (json_output := is_json(response_output)) and json_output["type"]=="file":
+        print("here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        print(response_output)
+        print(is_json(response_output))
         with open(json_output["path"]) as f:
             data = json.load(f)
             st.write(data)
 
     else:
-        print("here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        print(response_output)
-        print(is_json(response_output))
+       
         if if_history:
             st.chat_message("assistant", avatar="🤖").write(response_output)
         else:
