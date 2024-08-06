@@ -126,6 +126,7 @@ def define_agent():
         ADMA_get_meta_data,
         ADMA_list_directory_contents,
         ADMA_get_running_instance,
+        ADMA_download_file,
     ]
     tools.extend(ADMA_tools)
     tools.extend([
@@ -231,7 +232,7 @@ def create_map(lat,lng):
     
 
 def ai_reply(response_output, if_history=False):
-    if (json_output := is_json(response_output)) and json_output["type"]=="file":
+    if (json_output := is_json(response_output)) and json_output["type"]=="boundary":
         
         if not os.path.exists(json_output["path"]):
             if if_history:
@@ -268,6 +269,9 @@ def ai_reply(response_output, if_history=False):
                 folium.PolyLine(ring_coordinates, tooltip="Field Boundaries").add_to(m)
             with  st.chat_message("assistant", avatar="🤖"):
                 folium_static(m,height=300,width=500)
+
+    #elif (json_output := is_json(response_output)) and json_output["type"]=="file":
+
     else:
         print("here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         print(response_output)

@@ -125,7 +125,7 @@ def query_ENREEC_boundary_in_field(field_id: str) -> str:
     rd = uuid.uuid4()
     with open(f"tmp/boundary_{rd}.json", "w") as f:
         json.dump(response.json(),f)
-    result = {"type": "file", "path": f"tmp/boundary_{rd}.json"}
+    result = {"type": "boundary", "path": f"tmp/boundary_{rd}.json"}
     return json.dumps(result)
     #json.dumps(response.json()["values"][0]["multipolygons"][0]["rings"])
 
