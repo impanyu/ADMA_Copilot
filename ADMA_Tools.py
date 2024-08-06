@@ -71,7 +71,7 @@ class ADMA_download_file_input_schema(BaseModel):
 
 @tool("ADMA_download_file", args_schema=ADMA_download_file_input_schema)
 def ADMA_download_file(dir_path):
-    """Always call this tool when the user want to check if there is any running instance for dir_path on the ADMA server."""
+    """Always call this tool when the user want to download dir_path on the ADMA server."""
     download_url = f"{root_url}/api/download/?target_path={dir_path}"
     response = requests.get(download_url)
 
