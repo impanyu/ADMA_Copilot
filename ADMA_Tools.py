@@ -79,7 +79,7 @@ def ADMA_check_file(dir_path):
         rd = uuid.uuid4()
         with open(f"tmp/file_{rd}.json", "wb") as f:
             f.write(response.content)
-        result = {"type": "file", "path": f"tmp/file_{rd}.json"}
+        result = {"type": "file", "path": f"tmp/{rd}_{os.path.basename(dir_path)}"}
         return result   
     else:
         return f"Failed to download file: {dir_path}, Status code: {response.status_code}, {response.text}"
