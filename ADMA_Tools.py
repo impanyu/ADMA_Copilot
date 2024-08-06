@@ -113,6 +113,7 @@ def ADMA_plot_option(dir_path, value_name="temperature"):
         "xAxis": {
             "type": "category",
             "data": x_values,
+            "rotate": 45,  # Rotate labels by 45 degrees
         },
         "yAxis": {"type": "value"},
         "series": [
