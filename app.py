@@ -216,7 +216,7 @@ def define_agent():
     # Construct the Tools agent
     agent = create_tool_calling_agent(llm, tools, prompt)
     #Create an agent executor by passing in the agent and tools
-    agent_executor = AgentExecutor.from_agent_and_tools(agent=agent, tools=tools,verbose=False,max_iterations=1)
+    agent_executor = AgentExecutor.from_agent_and_tools(agent=agent, tools=tools,verbose=False,max_iterations=3)
 
 
     return agent_executor
