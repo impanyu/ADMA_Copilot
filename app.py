@@ -338,12 +338,12 @@ def main():
       st.session_state['chat_history'] = []
     
     # Display chat history
-    #for message in st.session_state['chat_history']:
-    #  if message['role'] == "user":
+    for message in st.session_state['chat_history']:
+      if message['role'] == "user":
           # avatar is a emoji
-    #      st.chat_message("user",avatar="👨‍🎓").write(message['content'])
-    #  elif message['role'] == "assistant":
-    #      ai_reply(message['content'],if_history=True)
+          st.chat_message("user",avatar="👨‍🎓").write(message['content'])
+      elif message['role'] == "assistant":
+          ai_reply(message['content'],if_history=True)
           #st.chat_message("assistant", avatar="🤖").write(message['content'])
 
   
@@ -351,13 +351,13 @@ def main():
     if prompt := st.chat_input("Ask Me Anything About Your AgData"):
       # Update chat history with user message
       user_message = {"role": "user",  "content": f"{prompt}"}
-      #st.session_state['chat_history'].append(user_message)
+      st.session_state['chat_history'].append(user_message)
       st.chat_message("user",avatar="👨‍🎓").write(prompt)
 
       # Generate a response and simulate some processing delay or logic
       #response = "I am processing your request... Generators are a type of iterable, like lists or tuples, but they do not store their contents in memory; instead, they generate the items on the fly and only hold one item at a time. This makes them very memory efficient when dealing with large datasets or potentially infinite streams."
-      #response = agent.invoke({"input":prompt,"chat_history":st.session_state['chat_history']})
-      response = agent.invoke({"input":prompt})
+      response = agent.invoke({"input":prompt,"chat_history":st.session_state['chat_history']})
+      #response = agent.invoke({"input":prompt})
       #print(response)
       #draw map on the screen
       #print(response["output"])
@@ -366,7 +366,7 @@ def main():
 
       
       bot_message = {"role": "assistant","content": response["output"]}
-      #st.session_state['chat_history'].append(bot_message)
+      st.session_state['chat_history'].append(bot_message)
 
 
 
