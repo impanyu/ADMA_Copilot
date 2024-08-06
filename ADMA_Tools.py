@@ -89,13 +89,19 @@ def ADMA_check_file(dir_path):
 
 
 class ADMA_plot_option_input_schema(BaseModel):
-    json_str: str = Field(description="a json string of reaml5 weather data")   
+    dir_path: str = Field(description="The path or name of the realm5 data file in the ADMA system. The full path is like /username/ag_data/.../file_name, but here the dir_path is the relative path after the ag_data directory.")   
     value_name: str = Field(description="the name of the value to be plotted") 
    
 @tool("ADMA_plot_option", args_schema=ADMA_plot_option_input_schema)
-def ADMA_plot_option(json_str, value_name="temperature"):
-    """Always call this tool when the user want to plot realm5 weather data by specifying the value name.  If the user ask to plot the temperature, the value_name should be 'temperature'."""
-    data = json.loads(json_str)
+def ADMA_plot_option(dir_path, value_name="temperature"):
+    """Always call this tool when the user want to plot realm5 weather data by specifying the value name and the realm5 data path.  If the user ask to plot the temperature, the value_name should be 'temperature'."""
+    download_url = f"{root_url}/api/download/?target_path={dir_path}"
+    response = requests.get(download_url)
+
+    if response.status_code == 200:
+        data = json.loads(response.content)
+    else:
+        return f"Failed to download file: {dir_path}, Status code: {response.status_code}, {response.text}"
     x_values = [] 
     y_values = []
 
