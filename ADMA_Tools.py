@@ -106,7 +106,7 @@ def ADMA_plot_option(dir_path, value_name="temperature"):
     y_values = []
     i = 0
     for x in data:
-        if not i % 5:
+        if not i % 5 == 0:
             i += 1
             continue
         x_values.append(x)
