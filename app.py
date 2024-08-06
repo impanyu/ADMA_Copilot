@@ -39,6 +39,7 @@ from streamlit_folium import st_folium, folium_static
 from ADMA_Tools import *
 
 from streamlit_echarts import st_echarts
+import uuid
 
 
 # Set up a prompt template
@@ -298,9 +299,14 @@ def ai_reply(response_output, if_history=False):
                 st.chat_message("assistant", avatar="🤖").write(stream_data(data))
 
     elif  json_output  and "series" in json_output:
+        # Generate a unique key for each widget
+        unique_key = str(uuid.uuid4())  # This generates a unique identifier
+
+        # Pass this unique key to the st_echarts function
+        
   
         with st.chat_message("assistant", avatar="🤖"):
-            st_echarts(options=json_output, height=400, width=600)
+            st_echarts(options=json_output, height=400, width=600, key=unique_key)
 
     else:
         
