@@ -172,6 +172,7 @@ def define_agent():
                Use ADMA_APIs for any questions about ADMA.\
                You might know the answer without running any tool, but you should always run the tool to get the answer. This is extremely important!!\
                If you get a json string, just output the json string, do not add any extra charactors! \
+               When asked to plot some data, you can not fabricate the plot, try to call some tools to do that!!\
                "
           ),
           ("placeholder", "{chat_history}"),
