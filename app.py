@@ -229,7 +229,7 @@ def create_map(lat,lng):
 
 def ai_reply(response_output, if_history=False):
     if (json_output := is_json(response_output)) and json_output["type"]=="file":
-        print(json_output)
+        
         if not os.path.exists(json_output["path"]):
             if if_history:
                 st.chat_message("assistant", avatar="🤖").write("No boundary found for the field")
@@ -266,6 +266,7 @@ def ai_reply(response_output, if_history=False):
             with  st.chat_message("assistant", avatar="🤖"):
                 folium_static(m,height=300,width=500)
     else:
+        print("here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         if if_history:
             st.chat_message("assistant", avatar="🤖").write(response_output)
         else:
