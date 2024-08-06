@@ -235,8 +235,8 @@ def create_map(lat,lng):
     
 
 def ai_reply(response_output, if_history=False):
-    json_output = extract_json(response_output)
-    if not json_output == None and "type" in json_output and json_output["type"]=="boundary":
+    json_output = is_json(response_output)
+    if  json_output  and "type" in json_output and json_output["type"]=="boundary":
         
         if not os.path.exists(json_output["path"]):
             if if_history:
@@ -274,7 +274,7 @@ def ai_reply(response_output, if_history=False):
             with  st.chat_message("assistant", avatar="🤖"):
                 folium_static(m,height=400,width=600)
 
-    elif not json_output == None and  "type" in json_output and json_output["type"]=="file":
+    elif json_output and  "type" in json_output and json_output["type"]=="file":
         print("here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         print(response_output)
         print(is_json(response_output))
@@ -285,7 +285,7 @@ def ai_reply(response_output, if_history=False):
             else:
                 st.chat_message("assistant", avatar="🤖").write(stream_data(data))
 
-    elif not json_output == None and "series" in json_output:
+    elif  json_output  and "series" in json_output:
   
         with st.chat_message("assistant", avatar="🤖"):
             st_echarts(options=json_output, height=400, width=600)
