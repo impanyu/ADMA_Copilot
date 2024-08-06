@@ -306,7 +306,7 @@ def ai_reply(response_output, if_history=False):
         
   
         with st.chat_message("assistant", avatar="🤖"):
-            st_echarts(options=json_output, height=400, width=600, key=unique_key)
+            st_echarts(options=json_output, height=400, width=500, key=unique_key)
 
     else:
         
