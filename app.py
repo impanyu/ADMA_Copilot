@@ -164,7 +164,8 @@ def define_agent():
           (
               "system",
               "You are a helpful assistant. \
-               Never fabricate unreal paths or files. Always call tools to generate real path\
+               To answer each question, you should always call a tool. \
+               Never fabricate unreal paths or files. Always call tools to generate real path.\
                For any query, make sure to use vectorstore_tool.\
                Make sure to use the tavily_search_results_json tool for something you do not know. \
                When the user want to draw a map or boundary of an ENREEC field, make sure to call query_ENREEC_boundary_in_field first. After that you only need to reply the json format returned from the tool: query_ENREEC_boundary_in_field, no more any extra charactors!\
