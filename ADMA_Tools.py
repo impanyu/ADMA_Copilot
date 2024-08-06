@@ -88,25 +88,28 @@ def ADMA_check_file(dir_path):
 
 
 class ADMA_plot_option_input_schema(BaseModel):
-    x_values: str = Field(description="json string: a list of x values, in the format of '[1, 2, 3, 4, 5]'")
-    y_values: str = Field(description="json string: a list of y values, in the format of '[1, 2, 3, 4, 5]'")
-
+    json_str: str = Field(description="a json string of reaml5 weather data")   
+    value_name: str = Field(description="the name of the value in the json string") 
+   
 @tool("ADMA_plot_option", args_schema=ADMA_plot_option_input_schema)
-def ADMA_plot_option(x_values, y_values):
-    """Always call this tool when the user specify x values and y values from a file on ADMA server, and want to plot x and y."""
-    if type(json.loads(x_values)[0]) == "str":
-        x_type = "category"
-    else:
-        x_type = "value"
+def ADMA_plot_option(json_str, value_name):
+    """Always call this tool when the user want to plot realm5 weather data by specifying the value name."""
+    data = json.loads(json_str)
+    x_values = [] 
+    y_values = []
+
+    for x in data:
+        x_values.append(x)
+        y_values.append(data[x][value_name])
 
     options = {
         "xAxis": {
-            "type": x_type,
-            "data": json.loads(x_values),
+            "type": "category",
+            "data": x_values,
         },
         "yAxis": {"type": "value"},
         "series": [
-            {"data": json.loads(y_values), "type": "line"}
+            {"data": y_values, "type": "line"}
         ],
     }
     return json.dumps(options)
