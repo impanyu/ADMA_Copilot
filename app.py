@@ -267,6 +267,8 @@ def ai_reply(response_output, if_history=False):
                 folium_static(m,height=300,width=500)
     else:
         print("here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        print(json_output)
+        print(is_json(response_output))
         if if_history:
             st.chat_message("assistant", avatar="🤖").write(response_output)
         else:
