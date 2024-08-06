@@ -137,8 +137,8 @@ def define_agent():
               func=search.run,
               description="useful for when you need to answer questions about current events. You should ask targeted questions",
           ),
-          #WriteFileTool(),
-          #ReadFileTool(),
+          WriteFileTool(),
+          ReadFileTool(),
           vectorstore_tool
       ])
    
@@ -170,7 +170,7 @@ def define_agent():
                Use John_Deere_APIs for any questions about ENREEC.\
                Use ADMA_APIs for any questions about ADMA.\
                You might know the answer without running any tool, but you should always run the tool to get the answer. This is extremely important!!\
-               \
+                \
                "
           ),
           ("placeholder", "{chat_history}"),
