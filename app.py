@@ -304,6 +304,18 @@ def ai_reply(response_output, if_history=False):
             st.chat_message("assistant", avatar="🤖").write(response_output)
         else:
             st.chat_message("assistant", avatar="🤖").write(stream_data(response_output))
+            options = {
+                "xAxis": {
+                    "type": "category",
+                    "data": json.loads(["a","b","c","d","e"]),
+                },
+                "yAxis": {"type": "value"},
+                "series": [
+                    {"data": json.loads([1,2,3,4,5]), "type": "line"}
+                ],
+            }
+            with st.chat_message("assistant", avatar="🤖"):
+                st_echarts(options=options, height=400, width=600)
 
 def main():
  
