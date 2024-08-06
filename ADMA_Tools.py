@@ -77,7 +77,7 @@ def ADMA_check_file(dir_path):
 
     if response.status_code == 200:
         rd = uuid.uuid4()
-        with open(f"tmp/file_{rd}.json", "wb") as f:
+        with open(f"tmp/{rd}_{os.path.basename(dir_path)}", "wb") as f:
             f.write(response.content)
         result = {"type": "file", "path": f"tmp/{rd}_{os.path.basename(dir_path)}"}
         return result   
