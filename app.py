@@ -126,7 +126,7 @@ def define_agent():
         ADMA_get_meta_data,
         ADMA_list_directory_contents,
         ADMA_get_running_instance,
-        ADMA_download_file,
+        ADMA_check_file,
     ]
     tools.extend(ADMA_tools)
     tools.extend([

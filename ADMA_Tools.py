@@ -69,9 +69,9 @@ def ADMA_get_running_instance(dir_path):
 class ADMA_download_file_input_schema(BaseModel):
     dir_path: str = Field(description="The path or name of the directory in the ADMA system. The full path is like /username/ag_data/.../file_name, but here the dir_path is the relative path after the ag_data directory.")
 
-@tool("ADMA_download_file", args_schema=ADMA_download_file_input_schema)
-def ADMA_download_file(dir_path):
-    """Always call this tool when the user want to download dir_path on the ADMA server."""
+@tool("ADMA_check_file", args_schema=ADMA_check_file_input_schema)
+def ADMA_check_file(dir_path):
+    """Always call this tool when the user want to check dir_path on the ADMA server."""
     download_url = f"{root_url}/api/download/?target_path={dir_path}"
     response = requests.get(download_url)
 
