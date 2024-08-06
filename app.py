@@ -271,7 +271,7 @@ def ai_reply(response_output, if_history=False):
             for ring_coordinates in all_ring_coordinates:
                 folium.PolyLine(ring_coordinates, tooltip="Field Boundaries").add_to(m)
             with  st.chat_message("assistant", avatar="🤖"):
-                folium_static(m,height=300,width=500)
+                folium_static(m,height=400,width=600)
 
     elif (json_output := is_json(response_output)) and  "type" in json_output and json_output["type"]=="file":
         print("here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
@@ -296,7 +296,7 @@ def ai_reply(response_output, if_history=False):
             ],
         }
         with st.chat_message("assistant", avatar="🤖"):
-            st_echarts(options=options, height=300, width=500)
+            st_echarts(options=options, height=400, width=600)
 
     else:
        
