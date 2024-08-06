@@ -166,7 +166,7 @@ def define_agent():
                Use John_Deere_APIs for any questions about ENREEC.\
                Use ADMA_APIs for any questions about ADMA.\
                You might know the answer without running any tool, but you should always run the tool to get the answer. This is extremely important!!\
-               If a json format is returned by any tool, just keep the raw json format and do not change anything, do not use markdown, just raw json string!\
+               \
                "
           ),
           ("placeholder", "{chat_history}"),
