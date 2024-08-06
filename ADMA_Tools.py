@@ -120,4 +120,4 @@ def ADMA_plot_option(dir_path, value_name="temperature"):
             {"data": y_values, "type": "line"}
         ],
     }
-    return json.dumps(options)
+    return options
