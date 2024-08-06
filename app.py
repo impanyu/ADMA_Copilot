@@ -277,7 +277,7 @@ def ai_reply(response_output, if_history=False):
         print(response_output)
         print(is_json(response_output))
         with open(json_output["path"]) as f:
-            data = json.load(f)
+            data = f.read()
             st.write(data)
     
 
