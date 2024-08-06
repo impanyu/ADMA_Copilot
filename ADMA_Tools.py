@@ -87,9 +87,10 @@ def ADMA_check_file(dir_path):
 
 
 
+
 class ADMA_plot_option_input_schema(BaseModel):
     json_str: str = Field(description="a json string of reaml5 weather data")   
-    value_name: str = Field(description="the name of the value in the json string") 
+    value_name: str = Field(description="the name of the value to be plotted") 
    
 @tool("ADMA_plot_option", args_schema=ADMA_plot_option_input_schema)
 def ADMA_plot_option(json_str, value_name):
