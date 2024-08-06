@@ -38,6 +38,8 @@ from streamlit_folium import st_folium, folium_static
 
 from ADMA_Tools import *
 
+from streamlit_echarts import st_echarts
+
 
 # Set up a prompt template
 class CustomPromptTemplate(StringPromptTemplate):
@@ -277,6 +279,8 @@ def ai_reply(response_output, if_history=False):
         with open(json_output["path"]) as f:
             data = json.load(f)
             st.write(data)
+    
+
 
     else:
        
