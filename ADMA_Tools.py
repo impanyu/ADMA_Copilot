@@ -104,10 +104,13 @@ def ADMA_plot_option(dir_path, value_name="temperature"):
         return f"Failed to download file: {dir_path}, Status code: {response.status_code}, {response.text}"
     x_values = [] 
     y_values = []
-
+    i = 0
     for x in data:
+        if not i % 5:
+            continue
         x_values.append(x)
         y_values.append(data[x][value_name])
+        i += 1
 
     options = {
         "xAxis": {
