@@ -237,7 +237,7 @@ def create_map(lat,lng):
 def ai_reply(response_output, if_history=False):
     
     json_output = find_largest_enclosed_json(response_output)
-    json_output = is_json(response_output)
+    json_output = is_json(json_output)
     if  json_output  and "type" in json_output and json_output["type"]=="boundary":
         
         if not os.path.exists(json_output["path"]):
