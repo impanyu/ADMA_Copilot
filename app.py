@@ -224,7 +224,7 @@ def define_agent():
 def stream_data(stream):
     for word in stream.split(" "):
         yield word + " "
-        time.sleep(0.02)
+        time.sleep(0.01)
 
 def create_map(lat,lng):
     # Create the map with Google Maps
