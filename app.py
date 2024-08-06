@@ -137,8 +137,8 @@ def define_agent():
               func=search.run,
               description="useful for when you need to answer questions about current events. You should ask targeted questions",
           ),
-          WriteFileTool(),
-          ReadFileTool(),
+          #WriteFileTool(),
+          #ReadFileTool(),
           vectorstore_tool
       ])
    
