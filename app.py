@@ -239,8 +239,9 @@ def create_map(lat,lng):
 
 def ai_reply(response_output, if_history=False):
     print(f"response output: {response_output}")
+    json_output = response_output
         
-    json_output = find_largest_enclosed_json(response_output)
+    #json_output = find_largest_enclosed_json(response_output)
     print(f"json_output: {json_output}")
     if json_output == None:
         json_output = None
