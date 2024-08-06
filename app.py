@@ -278,7 +278,10 @@ def ai_reply(response_output, if_history=False):
         print(is_json(response_output))
         with open(json_output["path"]) as f:
             data = f.read()
-            st.write(data)
+            if if_history:
+                st.chat_message("assistant", avatar="🤖").write(data)
+            else:
+                st.chat_message("assistant", avatar="🤖").write(stream_data(data))
     
 
 
