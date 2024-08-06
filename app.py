@@ -70,7 +70,7 @@ class CustomPromptTemplate(StringPromptTemplate):
 
 
 def define_agent():
-    llm=ChatOpenAI(temperature=0,model="gpt-4-turbo")
+    llm=ChatOpenAI(temperature=0,model="gpt-4o")
     search = SerpAPIWrapper()
 
 
