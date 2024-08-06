@@ -52,12 +52,12 @@ def ADMA_list_directory_contents(dir_path):
     
 
 class ADMA_get_running_instance_input_schema(BaseModel):
-    dir_path: str = Field(description="The path or name of the directory in the ADMA system. The dir_path is like /ypan12/ag_data/.../file_name")
+    dir_path: str = Field(description="The path or name of the directory in the ADMA system. The full path is like /username/ag_data/.../file_name, but here the dir_path is the relative path after the ag_data directory.")
 
 @tool("ADMA_get_running_instance", args_schema=ADMA_get_running_instance_input_schema)
 def ADMA_get_running_instance(dir_path):
     """Always call this tool when the user want to check if there is any running instance for dir_path on the ADMA server."""
-    list_url = f"{root_url}/api/get_running_instance/?target_path={dir_path}"
+    list_url = f"{root_url}/api/get_running_instance/?target_path=ypan12/ag_data/{dir_path}"
     response = requests.get(list_url)
     if response.status_code == 200:
         return response.json()  # Assuming the API returns a JSON list of paths
