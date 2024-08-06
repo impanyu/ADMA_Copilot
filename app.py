@@ -296,7 +296,7 @@ def ai_reply(response_output, if_history=False):
             st_echarts(options=json_output, height=400, width=600)
 
     else:
-       
+        print(json_output)
         if if_history:
             st.chat_message("assistant", avatar="🤖").write(response_output)
         else:
