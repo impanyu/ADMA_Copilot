@@ -66,7 +66,7 @@ def ADMA_get_running_instance(dir_path):
         
     
 
-class ADMA_download_file_input_schema(BaseModel):
+class ADMA_check_file_input_schema(BaseModel):
     dir_path: str = Field(description="The path or name of the directory in the ADMA system. The full path is like /username/ag_data/.../file_name, but here the dir_path is the relative path after the ag_data directory.")
 
 @tool("ADMA_check_file", args_schema=ADMA_check_file_input_schema)
