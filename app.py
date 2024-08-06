@@ -164,7 +164,7 @@ def define_agent():
           (
               "system",
               "You are a helpful assistant. \
-               To answer each question, you should always call a tool. \
+               To answer each question, you should always call a tool. Never fabricate the answer! \
                Never fabricate unreal paths or files. Always call tools to generate real path.\
                For any query, make sure to use vectorstore_tool.\
                Make sure to use the tavily_search_results_json tool for something you do not know. \
