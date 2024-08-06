@@ -175,7 +175,7 @@ def define_agent():
                When asked to plot some data, you can not fabricate the plot, try to call some tools to do that!!\
                "
           ),
-          ("placeholder", "{chat_history}"),
+          #("placeholder", "{chat_history}"),
           ("human", "{input}"),
           ("placeholder", "{agent_scratchpad}"),
       ]
